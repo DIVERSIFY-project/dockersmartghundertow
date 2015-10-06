@@ -9,8 +9,6 @@ RUN apt-get update \
 	&& cd /opt/SMART-GH/ \
 	&& git checkout undertow \
 	&& python generate_config.py --city dublin --sensors GoogleTraffic,NoiseTube,OzoneDetect --modes car,bike \
-	&& cd maps \
-	&& wget http://thingml.org/dist/diversify/dublin-m50.osm && mv dublin-m50.osm dublin.osm \
 	&& wget http://thingml.org/dist/diversify/dublin-gh.zip \
 	&& unzip dublin-gh.zip -d dublin-gh \
 	&& cd /opt/SMART-GH/ \
