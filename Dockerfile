@@ -3,12 +3,12 @@ MAINTAINER Olivier Barais <barais@irisa.fr>
 
 RUN apt-get update \
 	&& apt-get upgrade -y\
-	&& apt-get install -y git python-plumbum zip apt-utils\
+	&& apt-get install -y apt-utils git python-plumbum zip\
 	&& cd /opt \
 	&& git clone https://github.com/DIVERSIFY-project/SMART-GH.git \
 	&& cd /opt/SMART-GH/ \
-	&& git checkout undertow \
-	&& python generate_config.py --city dublin --sensors GoogleTraffic,NoiseTube,OzoneDetect --modes car,bike \
+	&& git checkout undertow_cached \
+	&& python generate_config.py --city dublin --sensors GoogleTraffic,NoiseTube,OzoneDetect --modes car,bike,walk,scooter,motorcycle \
 	&& wget http://thingml.org/dist/diversify/dublin-gh.zip \
 	&& unzip dublin-gh.zip -d dublin-gh \
 	&& cd /opt/SMART-GH/ \
