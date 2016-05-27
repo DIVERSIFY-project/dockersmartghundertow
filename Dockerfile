@@ -1,5 +1,5 @@
 FROM hypriot/rpi-java:latest
-MAINTAINER Olivier Barais <barais@irisa.fr>
+MAINTAINER Andre Elie <aelie@inria.fr>
 
 RUN apt-get update\
         && apt-get upgrade -y\
