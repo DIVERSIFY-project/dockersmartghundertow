@@ -1,12 +1,13 @@
-FROM maven:latest
+FROM hypriot/rpi-java:latest
 MAINTAINER Olivier Barais <barais@irisa.fr>
 
-RUN apt-get update \
-	&& apt-get upgrade -y\
-	&& apt-get install -y apt-utils git python-plumbum zip\
-	&& cd /opt \
-	&& git clone https://github.com/DIVERSIFY-project/SMART-GH.git \
-	&& cd /opt/SMART-GH/ \
+RUN apt-get update\
+        && apt-get upgrade -y\
+	&& apt-get install -y maven apt-utils git zip\
+	&& cd /opt
+RUN git config --global http.sslVerify false\
+        && git clone https://github.com/DIVERSIFY-project/SMART-GH.git
+RUN cd /opt/SMART-GH/ \
 	&& git checkout undertow_cached \
 	&& python generate_config.py --city dublin --sensors GoogleTraffic,NoiseTube,OzoneDetect --modes car,bike,walk,scooter,motorcycle \
 	&& wget http://thingml.org/dist/diversify/dublin-gh.zip \
