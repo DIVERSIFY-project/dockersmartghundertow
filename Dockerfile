@@ -4,10 +4,11 @@ MAINTAINER Andre Elie <aelie@inria.fr>
 RUN apt-get update\
         && apt-get upgrade -y\
 	&& apt-get install -y apt-utils git zip unzip python-pip python3-pip\
-        && cd /opt\
+        && cd /tmp\
         && wget http://apache.websitebeheerjd.nl/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz\
         && tar xzvf apache-maven-3.3.9-bin.tar.gz\
-        && export PATH=/opt/apache-maven-3.3.9/bin:$PATH\
+        && export PATH=/tmp/apache-maven-3.3.9/bin:$PATH\
+        && cd /opt\
         && git config --global http.sslVerify false\
         && git clone https://github.com/DIVERSIFY-project/SMART-GH.git\
         && cd SMART-GH\
